@@ -4,7 +4,7 @@ CSV parsing functionality for artform data
 
 import csv
 import logging
-from typing import List, Dict, Iterator
+from typing import List, Dict, Iterator, Any
 from .models import ArtformData
 from .utils import parse_array, safe_float, safe_int
 
@@ -15,6 +15,7 @@ class CSVParser:
     
     def __init__(self, csv_path: str):
         self.csv_path = csv_path
+        self.csv_headers = None
     
     def parse_csv(self) -> Iterator[tuple]:
         """
@@ -28,11 +29,16 @@ class CSVParser:
         try:
             with open(self.csv_path, mode='r', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
+                self.csv_headers = reader.fieldnames
+                logger.info(f"CSV headers found: {self.csv_headers}")
                 
                 for row_num, row in enumerate(reader, start=2):  # Start at 2 for header
                     try:
                         artform = self._create_artform_from_row(row)
-                        yield (row_num, artform)
+                        if artform:
+                            yield (row_num, artform)
+                        else:
+                            yield (row_num, None)
                     except ValueError as e:
                         logger.warning(f"Row {row_num}: Invalid data - {str(e)}")
                         yield (row_num, None)
@@ -48,24 +54,52 @@ class CSVParser:
             raise
     
     def _create_artform_from_row(self, row: Dict[str, str]) -> ArtformData:
-        """Create ArtformData from CSV row"""
-        return ArtformData(
-            name=row.get("name", "").strip(),
-            slug=row.get("slug", "").strip(),
-            description=row.get("description", "").strip(),
-            origin_region=parse_array(row.get("origin_region", "")),
-            heritage_level=row.get("heritage_level", "").strip(),
-            thumbnail_url=row.get("thumbnail_url", "").strip(),
-            banner_image_url=row.get("banner_image_url", "").strip(),
-            category=row.get("category", "").strip(),
-            materials_used=parse_array(row.get("materials_used", "")),
-            colours_used=parse_array(row.get("colours_used", "")),
-            related_art_form_ids=parse_array(row.get("related_art_form_ids", "")),
-            artist_ids=parse_array(row.get("artist_ids", "")),
-            total_value_sold=safe_float(row.get("total_value_sold", "")),
-            artist_count=safe_int(row.get("artist_count", "")),
-            total_unit_sold=safe_int(row.get("total_unit_sold", ""))
-        )
+        """Create ArtformData from CSV row with dynamic field mapping"""
+        artform = ArtformData()
+        
+        # Process each column in the CSV
+        for header, value in row.items():
+            if header and value is not None:
+                header = header.strip()
+                value = str(value).strip() if value else ""
+                
+                # Skip empty values
+                if not value:
+                    continue
+                
+                # Convert value based on field type
+                converted_value = self._convert_value(header, value)
+                
+                # Set the field value and mark it for update
+                if hasattr(artform, header):
+                    artform.set_field_value(header, converted_value)
+                else:
+                    logger.warning(f"Unknown field '{header}' in CSV, skipping")
+        
+        # Validate that we have at least the required fields
+        if not artform.slug:
+            logger.error("Missing required field 'slug' in CSV row")
+            return None
+        
+        return artform
+    
+    def _convert_value(self, field_name: str, value: str) -> Any:
+        """Convert string value to appropriate type based on field"""
+        if not value:
+            return None
+        
+        # Get the field type from ArtformData
+        field_type = ArtformData._field_types.get(field_name)
+        
+        if field_type == list:
+            return parse_array(value)
+        elif field_type == float:
+            return safe_float(value)
+        elif field_type == int:
+            return safe_int(value)
+        else:
+            # Default to string
+            return value
     
     def get_total_rows(self) -> int:
         """Get total number of rows in CSV (excluding header)"""
@@ -76,3 +110,16 @@ class CSVParser:
         except Exception as e:
             logger.error(f"Error counting CSV rows: {str(e)}")
             return 0
+    
+    def get_csv_headers(self) -> List[str]:
+        """Get the headers from the CSV file"""
+        if self.csv_headers is None:
+            try:
+                with open(self.csv_path, mode='r', encoding='utf-8-sig') as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    self.csv_headers = reader.fieldnames or []
+            except Exception as e:
+                logger.error(f"Error reading CSV headers: {str(e)}")
+                self.csv_headers = []
+        
+        return self.csv_headers or []

@@ -43,7 +43,7 @@ class FirestoreManager:
     )
     def upload_document(self, artform: ArtformData) -> ProcessResult:
         """
-        Upload a single document to Firestore
+        Upload a single document to Firestore with partial updates
         
         Args:
             artform: ArtformData instance
@@ -57,27 +57,36 @@ class FirestoreManager:
             doc_ref = self.db.collection(self.firebase_config.collection_name).document(artform.slug)
             doc_snapshot = doc_ref.get()
             
-            # Prepare document data
-            doc_data = artform.to_firestore_dict()
-            doc_data["updated_at"] = firestore.SERVER_TIMESTAMP
-            
+            # Check if document exists
             is_new_document = not doc_snapshot.exists
             
+            # Get only the fields that need to be updated
+            doc_data = artform.to_firestore_dict()
+            
+            # Always add updated_at timestamp
+            doc_data["updated_at"] = firestore.SERVER_TIMESTAMP
+            
+            # Add created_at only for new documents
             if is_new_document:
                 doc_data["created_at"] = firestore.SERVER_TIMESTAMP
                 logger.debug(f"Creating new document: {artform.slug}")
             else:
-                logger.debug(f"Updating existing document: {artform.slug}")
+                logger.debug(f"Updating existing document: {artform.slug} with fields: {list(doc_data.keys())}")
             
-            # Upload to Firestore
+            # Use merge=True to perform partial updates
             doc_ref.set(doc_data, merge=True)
             
             processing_time = time.time() - start_time
+            fields_updated = artform.get_fields_to_update()
+            
+            logger.info(f"📝 Successfully {'CREATED' if is_new_document else 'UPDATED'} document: {artform.slug}")
+            
             return ProcessResult(
                 doc_id=artform.slug,
                 success=True,
                 processing_time=processing_time,
-                is_new_document=is_new_document
+                is_new_document=is_new_document,
+                fields_updated=fields_updated
             )
             
         except Exception as e:
@@ -108,10 +117,15 @@ class FirestoreManager:
         try:
             for artform in artforms:
                 doc_ref = self.db.collection(self.firebase_config.collection_name).document(artform.slug)
+                
+                # Get only the fields that need to be updated
                 doc_data = artform.to_firestore_dict()
                 doc_data["updated_at"] = firestore.SERVER_TIMESTAMP
+                
+                # For batch operations, we assume they could be new documents
                 doc_data["created_at"] = firestore.SERVER_TIMESTAMP
                 
+                # Use merge=True for partial updates
                 batch.set(doc_ref, doc_data, merge=True)
             
             # Commit batch
@@ -122,7 +136,8 @@ class FirestoreManager:
                 results.append(ProcessResult(
                     doc_id=artform.slug,
                     success=True,
-                    is_new_document=True  # Simplified for batch operations
+                    is_new_document=True,  # Simplified for batch operations
+                    fields_updated=artform.get_fields_to_update()
                 ))
                 
         except Exception as e:
