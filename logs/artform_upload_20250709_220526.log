@@ -1,0 +1,36 @@
+2025-07-09 22:05:26,351 - artform_uploader - INFO - Artform Upload System Starting...
+2025-07-09 22:05:26,384 - artform_uploader.database - INFO - Firebase initialized successfully
+2025-07-09 22:05:26,384 - artform_uploader.uploader - INFO - 🚀 Starting artform upload process...
+2025-07-09 22:05:26,384 - artform_uploader.uploader - INFO - 🔧 Configuration: 10 threads, batch size: 500
+2025-07-09 22:05:26,397 - artform_uploader.uploader - INFO - 📋 CSV contains the following fields: ['slug', 'name', 'description', 'origin_region', 'heritage_level', 'thumbnail_url', 'banner_image_url', 'category', 'materials_used', 'colours_used', 'related_art_form_ids', 'artist_ids', 'total_value_sold', 'artist_count', 'total_unit_sold']
+2025-07-09 22:05:26,398 - artform_uploader.uploader - INFO - 📊 Total rows to process: 5
+2025-07-09 22:05:26,398 - artform_uploader.csv_parser - INFO - Starting to parse CSV file: C:\Users\MY PC\OneDrive\Desktop\CODE\Python\memeraki2\artformdb_memeraki\artforms.csv
+2025-07-09 22:05:26,398 - artform_uploader.csv_parser - INFO - CSV headers found: ['slug', 'name', 'description', 'origin_region', 'heritage_level', 'thumbnail_url', 'banner_image_url', 'category', 'materials_used', 'colours_used', 'related_art_form_ids', 'artist_ids', 'total_value_sold', 'artist_count', 'total_unit_sold']
+2025-07-09 22:05:26,399 - artform_uploader.uploader - INFO - 🔄 Processing batch of 5 documents using 10 threads...
+2025-07-09 22:05:26,402 - artform_uploader.uploader - INFO - 📤 Submitted 5 tasks to thread pool
+2025-07-09 22:05:28,496 - artform_uploader.database - INFO - 📝 Successfully UPDATED document: kalamkari
+2025-07-09 22:05:28,497 - artform_uploader.uploader - INFO - 🔄 UPDATED: kalamkari (fields: name, materials_used, total_value_sold, description, colours_used, artist_ids, thumbnail_url, heritage_level, origin_region, total_unit_sold, related_art_form_ids, artist_count, banner_image_url, category, slug)
+2025-07-09 22:05:28,540 - artform_uploader.database - INFO - 📝 Successfully UPDATED document: pichwai
+2025-07-09 22:05:28,541 - artform_uploader.uploader - INFO - 🔄 UPDATED: pichwai (fields: name, materials_used, total_value_sold, description, colours_used, artist_ids, thumbnail_url, heritage_level, origin_region, total_unit_sold, related_art_form_ids, artist_count, banner_image_url, category, slug)
+2025-07-09 22:05:28,546 - artform_uploader.database - INFO - 📝 Successfully UPDATED document: warli
+2025-07-09 22:05:28,546 - artform_uploader.uploader - INFO - 🔄 UPDATED: warli (fields: name, materials_used, total_value_sold, description, colours_used, artist_ids, thumbnail_url, heritage_level, origin_region, total_unit_sold, related_art_form_ids, artist_count, banner_image_url, category, slug)
+2025-07-09 22:05:28,586 - artform_uploader.database - INFO - 📝 Successfully UPDATED document: gond
+2025-07-09 22:05:28,586 - artform_uploader.database - INFO - 📝 Successfully UPDATED document: madhubani
+2025-07-09 22:05:28,587 - artform_uploader.uploader - INFO - 🔄 UPDATED: gond (fields: name, materials_used, total_value_sold, description, colours_used, artist_ids, thumbnail_url, heritage_level, origin_region, total_unit_sold, related_art_form_ids, artist_count, banner_image_url, category, slug)
+2025-07-09 22:05:28,587 - artform_uploader.uploader - INFO - 🔄 UPDATED: madhubani (fields: name, materials_used, total_value_sold, description, colours_used, artist_ids, thumbnail_url, heritage_level, origin_region, total_unit_sold, related_art_form_ids, artist_count, banner_image_url, category, slug)
+2025-07-09 22:05:28,587 - artform_uploader.uploader - INFO - 
+============================================================
+2025-07-09 22:05:28,588 - artform_uploader.uploader - INFO - 🎉 UPLOAD COMPLETED
+2025-07-09 22:05:28,588 - artform_uploader.uploader - INFO - ============================================================
+2025-07-09 22:05:28,588 - artform_uploader.uploader - INFO - ✅ Successfully processed: 5 records
+2025-07-09 22:05:28,588 - artform_uploader.uploader - INFO -   🆕 New documents CREATED: 0
+2025-07-09 22:05:28,588 - artform_uploader.uploader - INFO -   🔄 Existing documents UPDATED: 5
+2025-07-09 22:05:28,588 - artform_uploader.uploader - INFO - ❌ Errors encountered: 0 records
+2025-07-09 22:05:28,589 - artform_uploader.uploader - INFO - ⚠️  Skipped records: 0 records
+2025-07-09 22:05:28,590 - artform_uploader.uploader - INFO - 📊 Total processed: 5 records
+2025-07-09 22:05:28,590 - artform_uploader.uploader - INFO - ⏱️  Total duration: 2.21 seconds
+2025-07-09 22:05:28,590 - artform_uploader.uploader - INFO - 🚀 Average rate: 2.27 records/second
+2025-07-09 22:05:28,590 - artform_uploader.uploader - INFO - 📈 Success rate: 100.0%
+2025-07-09 22:05:28,590 - artform_uploader.uploader - INFO - 🔧 Threading: Using 10 concurrent workers
+2025-07-09 22:05:28,590 - artform_uploader.uploader - INFO - 📦 Batch size: 500 records per batch
+2025-07-09 22:05:28,590 - artform_uploader - INFO - Upload completed successfully
