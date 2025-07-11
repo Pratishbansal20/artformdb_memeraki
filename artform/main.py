@@ -14,7 +14,7 @@ from .utils import setup_logging
 def create_default_config() -> UploadConfig:
     """Create default configuration"""
     firebase_config = FirebaseConfig(
-        credentials_path=r"C:\Users\MY PC\OneDrive\Desktop\CODE\Python\memeraki2\serviceAccountKey.json",
+        credentials_path=r"C:\Users\MY PC\OneDrive\Desktop\CODE\Python\Memeraki\artform\serviceAccountKey.json",
         collection_name="art_forms"
     )
     
@@ -30,7 +30,7 @@ def create_default_config() -> UploadConfig:
     )
     
     return UploadConfig(
-        csv_path=r"C:\Users\MY PC\OneDrive\Desktop\CODE\Python\memeraki2\artforms.csv",
+        csv_path=r"C:\Users\MY PC\OneDrive\Desktop\CODE\Python\Memeraki\artform\artforms.csv",
         firebase=firebase_config,
         processing=processing_config,
         logging=logging_config
