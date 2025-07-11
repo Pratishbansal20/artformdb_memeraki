@@ -1,0 +1,11 @@
+# Ignore Python cache and logs
+__pycache__/
+*.pyc
+logs/
+# Ignore VSCode and system files
+.vscode/
+.DS_Store
+
+# Ignore sensitive credentials
+serviceAccountKey.json
+*.env
