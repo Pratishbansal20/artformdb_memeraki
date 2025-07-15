@@ -1,0 +1,35 @@
+2025-07-11 16:03:25,436 - artform_uploader - INFO - Artform Upload System Starting...
+2025-07-11 16:03:25,482 - artform_uploader.database - INFO - Firebase initialized successfully
+2025-07-11 16:03:25,482 - artform_uploader.uploader - INFO - Starting artform upload process...
+2025-07-11 16:03:25,483 - artform_uploader.uploader - INFO - Configuration: 10 threads, batch size: 500
+2025-07-11 16:03:25,503 - artform_uploader.uploader - INFO - CSV contains the following fields: ['slug', 'name', 'description', 'origin_region', 'heritage_level', 'thumbnail_url', 'banner_image_url', 'category', 'materials_used', 'colours_used', 'related_art_form_ids', 'artist_ids', 'total_value_sold', 'artist_count', 'total_unit_sold']
+2025-07-11 16:03:25,507 - artform_uploader.uploader - INFO - Total rows to process: 5
+2025-07-11 16:03:25,507 - artform_uploader.csv_parser - INFO - Starting to parse CSV file: C:\Users\MY PC\OneDrive\Desktop\CODE\Python\Memeraki\artform\artforms.csv
+2025-07-11 16:03:25,507 - artform_uploader.csv_parser - INFO - CSV headers found: ['slug', 'name', 'description', 'origin_region', 'heritage_level', 'thumbnail_url', 'banner_image_url', 'category', 'materials_used', 'colours_used', 'related_art_form_ids', 'artist_ids', 'total_value_sold', 'artist_count', 'total_unit_sold']
+2025-07-11 16:03:25,508 - artform_uploader.csv_parser - ERROR - Missing required field 'slug' in CSV row
+2025-07-11 16:03:25,508 - artform_uploader.uploader - INFO - Processing batch of 4 documents using 10 threads...
+2025-07-11 16:03:25,511 - artform_uploader.uploader - INFO - Submitted 4 tasks to thread pool
+2025-07-11 16:03:26,480 - artform_uploader.database - INFO - 📝 Successfully UPDATED document: gond
+2025-07-11 16:03:26,481 - artform_uploader.uploader - INFO - UPDATED: gond (fields: origin_region, total_value_sold, name, category, materials_used, artist_count, thumbnail_url, slug, description, banner_image_url, colours_used, artist_ids, total_unit_sold, heritage_level, related_art_form_ids)
+2025-07-11 16:03:26,483 - artform_uploader.database - INFO - 📝 Successfully UPDATED document: warli
+2025-07-11 16:03:26,484 - artform_uploader.uploader - INFO - UPDATED: warli (fields: origin_region, total_value_sold, name, category, materials_used, artist_count, thumbnail_url, slug, description, banner_image_url, colours_used, artist_ids, total_unit_sold, heritage_level, related_art_form_ids)
+2025-07-11 16:03:26,493 - artform_uploader.database - INFO - 📝 Successfully UPDATED document: kalamkari
+2025-07-11 16:03:26,494 - artform_uploader.uploader - INFO - UPDATED: kalamkari (fields: origin_region, total_value_sold, name, category, artist_count, thumbnail_url, slug, description, banner_image_url, colours_used, artist_ids, total_unit_sold, heritage_level, related_art_form_ids)
+2025-07-11 16:03:26,521 - artform_uploader.database - INFO - 📝 Successfully UPDATED document: madhubani
+2025-07-11 16:03:26,521 - artform_uploader.uploader - INFO - UPDATED: madhubani (fields: origin_region, total_value_sold, name, category, materials_used, artist_count, thumbnail_url, slug, description, banner_image_url, colours_used, artist_ids, total_unit_sold, heritage_level, related_art_form_ids)
+2025-07-11 16:03:26,522 - artform_uploader.uploader - INFO - 
+============================================================
+2025-07-11 16:03:26,522 - artform_uploader.uploader - INFO - UPLOAD COMPLETED
+2025-07-11 16:03:26,523 - artform_uploader.uploader - INFO - ============================================================
+2025-07-11 16:03:26,523 - artform_uploader.uploader - INFO - Successfully processed: 4 records
+2025-07-11 16:03:26,523 - artform_uploader.uploader - INFO - New documents CREATED: 0
+2025-07-11 16:03:26,524 - artform_uploader.uploader - INFO - Existing documents UPDATED: 4
+2025-07-11 16:03:26,524 - artform_uploader.uploader - INFO - Errors encountered: 0 records
+2025-07-11 16:03:26,524 - artform_uploader.uploader - INFO - Skipped records: 1 records
+2025-07-11 16:03:26,524 - artform_uploader.uploader - INFO - Total processed: 4 records
+2025-07-11 16:03:26,525 - artform_uploader.uploader - INFO - Total duration: 1.04 seconds
+2025-07-11 16:03:26,525 - artform_uploader.uploader - INFO - Average rate: 3.84 records/second
+2025-07-11 16:03:26,525 - artform_uploader.uploader - INFO - Success rate: 100.0%
+2025-07-11 16:03:26,526 - artform_uploader.uploader - INFO - Threading: Using 10 concurrent workers
+2025-07-11 16:03:26,526 - artform_uploader.uploader - INFO - Batch size: 500 records per batch
+2025-07-11 16:03:26,526 - artform_uploader - INFO - Upload completed successfully

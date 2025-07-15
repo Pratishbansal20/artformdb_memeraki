@@ -1,0 +1,9 @@
+2025-07-15 16:06:02,306 - json_uploader - INFO - Starting GenAI JSON top art collection uploader — no recommendations features.
+2025-07-15 16:06:03,574 - json_uploader - ERROR - Failed to process kalamkari_top_products.json: 400 Document name "projects/artforms-db/databases/(default)/documents/artform_top_products/kalamkari/products/" has invalid trailing "/".
+2025-07-15 16:06:03,723 - json_uploader - ERROR - Failed to process madhubani_top_products.json: 400 Document name "projects/artforms-db/databases/(default)/documents/artform_top_products/madhubani/products/" has invalid trailing "/".
+2025-07-15 16:06:03,724 - json_uploader - INFO - ============================================================
+2025-07-15 16:06:03,724 - json_uploader - INFO - UPLOAD SUMMARY
+2025-07-15 16:06:03,724 - json_uploader - INFO - ============================================================
+2025-07-15 16:06:03,725 - json_uploader - INFO - Total files processed: 0
+2025-07-15 16:06:03,725 - json_uploader - INFO - Total products uploaded: 0
+2025-07-15 16:06:03,725 - json_uploader - INFO - Files failed: 2
