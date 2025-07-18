@@ -1,9 +1,0 @@
-2025-07-15 16:15:26,879 - json_uploader - INFO - Starting GenAI JSON top art collection uploader — no recommendations features.
-2025-07-15 16:15:29,239 - json_uploader - INFO - Uploaded 10 products for 'kalamkari'.
-2025-07-15 16:15:29,982 - json_uploader - ERROR - Failed to process madhubani_top_products.json: A document must have an even number of path elements
-2025-07-15 16:15:29,983 - json_uploader - INFO - ============================================================
-2025-07-15 16:15:29,983 - json_uploader - INFO - UPLOAD SUMMARY
-2025-07-15 16:15:29,983 - json_uploader - INFO - ============================================================
-2025-07-15 16:15:29,985 - json_uploader - INFO - Total files processed: 1
-2025-07-15 16:15:29,986 - json_uploader - INFO - Total products uploaded: 10
-2025-07-15 16:15:29,986 - json_uploader - INFO - Files failed: 1

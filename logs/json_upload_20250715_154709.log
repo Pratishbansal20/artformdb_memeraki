@@ -1,9 +1,0 @@
-2025-07-15 15:47:09,792 - json_uploader - INFO - Starting GenAI JSON top art collection uploader — no recommendations features.
-2025-07-15 15:47:09,825 - json_uploader - INFO - Uploaded 0 products for 'kalamkari'.
-2025-07-15 15:47:09,826 - json_uploader - INFO - Uploaded 0 products for 'madhubani'.
-2025-07-15 15:47:09,826 - json_uploader - INFO - ============================================================
-2025-07-15 15:47:09,827 - json_uploader - INFO - UPLOAD SUMMARY
-2025-07-15 15:47:09,827 - json_uploader - INFO - ============================================================
-2025-07-15 15:47:09,829 - json_uploader - INFO - Total files processed: 2
-2025-07-15 15:47:09,829 - json_uploader - INFO - Total products uploaded: 0
-2025-07-15 15:47:09,829 - json_uploader - INFO - Files failed: 0
